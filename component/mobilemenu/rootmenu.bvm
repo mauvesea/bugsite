@@ -256,6 +256,16 @@ MobileMenu_RootMenu:
     JMP MobileMenu_RootMenu ;$4
 
 .exit
+    ;The menu overwrites the normal map textbox palettes (BG 6 and 7).
+    ;Reload the normal theme after all UI palette operations have completed.
+    INDIR W_MainScript_PortraitID
+    IMMED $0
+    STR
+    POPALL
+    ARFREE
+    NPREF FARCALL $CD ;MainScript_LoadWindowTheme
+    POPALL
+    POPALL
     RET
 
 MobileMenu_PrimaryScreenLogic: ;$206
