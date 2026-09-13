@@ -350,6 +350,18 @@ MobileMenu_PrimaryScreenLogic: ;$206
     ARFREE
     POPALL
     VWFDISABLE
+
+    IMMED $9
+    IMMED $11
+    SCRCURS
+    IMMED $1D8
+    IMMED $1DF
+    VWFENABLE
+    DB STR_127_Money
+    PRINT
+    ARFREE
+    POPALL
+    VWFDISABLE
     
     INDIR W_LCDC_SetAttrVal
     INDIR W_LCDC_SetAttrVal
