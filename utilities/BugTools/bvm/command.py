@@ -4,6 +4,7 @@ from BugTools.bvm.passes import resolve_equates, fix_labels, autobalance_strings
 from BugTools.bvm.formatting import symbolize_indirs, coalesce_psuedoinstructions, unparse_bvm, identify_unidentified
 from BugTools.bvm.strings import parse_stringtbl, parse_charmap
 from BugTools.bvm.symbols import parse_rgbds_symbols
+from BugTools.conditional import select_defines
 
 from BugTools.bfont.parser import bfont_grammar, FontWidthVisitor
 from BugTools.bfont.passes import metrics_table, metrics_length
@@ -20,6 +21,7 @@ def bvmasm():
     parser.add_argument('--metrics', metavar='metrics.bfont', type=str, help='File detailing VWF metrics for this font.')
     parser.add_argument('--optimize', help='Remove extraneous instructions and prefixes.', action='store_true')
     parser.add_argument('--opcode_tbl', dest='opcode_tbl', metavar='opcodes.json', type=str, help='Mapping of instruction opcodes to their binary representations.')
+    parser.add_argument('-D', '--define', choices=('ALPHA', 'BETA', 'DEBUG'), action='append', default=[], help='Select conditional source lines.')
     parser.add_argument('charmap', metavar='charmap.bin', type=str, help='Character mapping for the DB opcode.')
     parser.add_argument('output', metavar='file.bugvm.bin', type=str, help='Where to save the assembled code.')
     
@@ -51,7 +53,7 @@ def bvmasm():
     string_wid = metrics_length(metrics, strenc)
     
     with open(args.infile) as srcfile:
-        src = srcfile.read()
+        src = select_defines(srcfile.read(), args.define)
         tree = bvm_grammar.parse(src + "\n") #Add a newline. Our grammar doesn't like files without ending newlines.
         
         mp = InstrListVisitor().visit(tree)

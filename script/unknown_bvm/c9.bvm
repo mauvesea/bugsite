@@ -3,7 +3,12 @@
 
 .sub_c9_4
     INDIR W_System_GameVersion
+IF DEF(ALPHA)
+    IMMED $0
+ENDC
+IF DEF(BETA)
     IMMED $1
+ENDC
     STR
     POPALL
     PRED $A
@@ -20,8 +25,12 @@
     NPREF POPALL
 
 .sub_c9_2b
+IF DEF(DEBUG)
+    ; Skipping this setup call exposes the debug menu.
+ELSE
     JAL .sub_c9_671 ;$671
     NPREF POPALL
+ENDC
     INDIR $17F
     IMMED $1
     STR

@@ -199,7 +199,20 @@ M_BugVM_Sec0c5: "script/unknown_bvm/c5.bof"
 M_BugVM_Sec0c6: "script/unknown_bvm/c6.bof"
 M_BugVM_Sec0c7: "script/unknown_bvm/c7.bof"
 M_BugVM_Sec0c8: "script/unknown_bvm/c8.bof"
+IF DEF(ALPHA)
+IF DEF(DEBUG)
+M_BugVM_Sec0c9: "versions/alpha_debug/script/unknown_bvm/c9.bof"
+ELSE
 M_BugVM_Sec0c9: "versions/alpha/script/unknown_bvm/c9.bof"
+ENDC
+ENDC
+IF DEF(BETA)
+IF DEF(DEBUG)
+M_BugVM_Sec0c9: "versions/beta_debug/script/unknown_bvm/c9.bof"
+ELSE
+M_BugVM_Sec0c9: "versions/beta/script/unknown_bvm/c9.bof"
+ENDC
+ENDC
 M_BugVM_Sec0ca: "script/unknown_bvm/ca.bof"
 M_BugVM_Sec0cb: "script/unknown_bvm/cb.bof"
 M_BugVM_Sec0cc: "script/unknown_bvm/cc.bof"
