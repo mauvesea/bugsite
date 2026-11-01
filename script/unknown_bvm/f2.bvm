@@ -260,10 +260,19 @@
     IMMED $1
     NPREF UO $6D
     POPALL
+    INDIR W_MobileMenu_ActiveScreen
+    IMMED $B
+    CMP_GEQ
+    INDIR W_MobileMenu_ActiveScreen
+    IMMED $D
+    CMP_LEQ
+    ANDL
+    JMPT .defer_item_reveal
     ARFREE
     IMMED $0
     NPREF UO $F9
     POPALL
+.defer_item_reveal
     INDIR W_WindowManager_ContentsAttributes
     IMMED $0
     STR
@@ -380,6 +389,7 @@
     POPALL
 
 .sub_f2_332
+    DESCCOMMIT
     ARFREE
     NPREF UO $85
     POPALL
@@ -659,6 +669,21 @@
     POPALL
 
 .sub_f2_580
+    INDIR W_MobileMenu_ActiveScreen
+    IMMED $B
+    CMP_GEQ
+    INDIR W_MobileMenu_ActiveScreen
+    IMMED $D
+    CMP_LEQ
+    ANDL
+    JMPT .reveal_item_page
+    JMP .item_page_revealed
+.reveal_item_page
+    ARFREE
+    IMMED $0
+    NPREF UO $F9
+    POPALL
+.item_page_revealed
     INDIR $17B
     ARFREE
     NPREF SPRINPUT
@@ -792,10 +817,21 @@
     ARFREE
     NPREF WINCLR
     POPALL
+    INDIR $462
+    IMMED $2
+    AND
+    IMMED $0
+    CMP_EQ
+    JMPT .have_none_print
+    IMMED $044
+    IMMED $050
+    VWFENABLE
+.have_none_print
     ARFREE
     DB STR_F2_696
     NPREF PRINT
     POPALL
+    VWFDISABLE
     ARFREE
     IMMED $0
     NPREF UO $F9
@@ -1086,12 +1122,15 @@
     INDIR
     STR
     POPALL
+    JAL .enable_item_name_vwf
+    NPREF POPALL
     ARFREE
     INDIR W_MainScript_WindowXPos
     IMMED $FF
     AND
     NPREF PRKEY
     POPALL
+    VWFDISABLE
     INDIR W_MainScript_WindowXPos
     IMMED $530
     INDIR W_MainScript_WindowXPos
@@ -1139,12 +1178,15 @@
     INDIR
     STR
     POPALL
+    JAL .enable_item_name_vwf
+    NPREF POPALL
     ARFREE
     INDIR W_MainScript_WindowXPos
     IMMED $FF
     AND
     NPREF PRCHIP
     POPALL
+    VWFDISABLE
     INDIR W_MainScript_WindowXPos
     IMMED $500
     INDIR W_MainScript_WindowXPos
@@ -1192,12 +1234,66 @@
     INDIR
     STR
     POPALL
+    JAL .enable_item_name_vwf
+    NPREF POPALL
     ARFREE
     INDIR W_MainScript_WindowXPos
     IMMED $FF
     AND
     NPREF PRKEY
     POPALL
+    VWFDISABLE
+    RET
+
+.enable_item_name_vwf
+    ; Access Point also calls this list renderer; its menus use tile text.
+    INDIR $462
+    IMMED $2
+    AND
+    IMMED $0
+    CMP_EQ
+    JMPT .item_name_vwf_done
+    ; Four rows live above the bank 0 font's unused upper tile range.
+    INDIR $176
+    IMMED $4
+    CMP_GEQ
+    JMPT .item_name_buffer_row
+    IMMED $044
+    INDIR $176
+    IMMED $D
+    MUL
+    ADD
+    IMMED $050
+    INDIR $176
+    IMMED $D
+    MUL
+    ADD
+    VWFENABLE
+    RET
+.item_name_buffer_row
+    INDIR $176
+    IMMED $4
+    CMP_NEQ
+    JMPT .item_name_sixth_row
+    IMMED $090
+    IMMED $09C
+    VWFENABLE
+    RET
+.item_name_sixth_row
+    INDIR $176
+    IMMED $5
+    CMP_NEQ
+    JMPT .item_name_seventh_row
+    IMMED $0BA
+    IMMED $0C6
+    VWFENABLE
+    RET
+.item_name_seventh_row
+    ; $1F0-$1FC is above the $F0 tiles reloaded into bank 1.
+    IMMED $1F0
+    IMMED $1FC
+    VWFENABLE
+.item_name_vwf_done
     RET
 
 .sub_f2_9d1
@@ -1906,4 +2002,5 @@
 
 .sub_f2_f4a
     RET
+
     FGAME

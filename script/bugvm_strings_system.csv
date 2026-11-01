@@ -3012,6 +3012,10 @@ STR_121_171,/,/,
 STR_127_2A4,0,0,(Mobile menu)
 STR_127_Mobile,モーバイル,Mobile,"(In Japanese version, these are baked into the UI tilemap)"
 STR_127_Money,おかね,Money,
+STR_127_Items,アイテム,Items,(Item menu footer)
+STR_127_VaccineTool,ワクチン・ツール,Vaccine/Tool,
+STR_127_ChipCategory,チッフ゜,Chip,
+STR_127_PasswordCategory,ハ゜スワート゛,Password,
 STR_127_3A1,てもちハ゛ク゛をみたり\チッフ゜のそうひ゛をする。,See your current\Bugs.  ,
 STR_127_3CE,アイテムを つかったり\かくにんしたりする。,Check or use items.   ,
 STR_127_3F8,ならひ゛かえやハ゜ーティの\へんせいを おこなう。,Organize your party.      ,

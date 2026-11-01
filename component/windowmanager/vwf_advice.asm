@@ -8,15 +8,15 @@ SECTION "WindowManager VWF Advice Memory", WRAMX[$DFC1], BANK[$2]
 ;different purposes. All rings are specified as background tile indicies in
 ;VRAM bank zero.
 W_WindowManager_SourceWRAMBank: ds 1
-W_WindowManager_VWFRingStart: ds 2 ;tiles from $8800
-W_WindowManager_VWFRingEnd: ds 2
-W_WindowManager_VWFRingWriteHead: ds 2
-W_WindowManager_CompositionState: ds 1
+W_WindowManager_VWFRingStart:: ds 2 ;tiles from $8800
+W_WindowManager_VWFRingEnd:: ds 2
+W_WindowManager_VWFRingWriteHead:: ds 2
+W_WindowManager_CompositionState:: ds 1
 W_WindowManager_CompositionShift: ds 1
 W_WindowManager_CompositionFont: ds 2
 W_WindowManager_CompositionMetrics: ds 2
-W_WindowManager_CompositionBackground: ds 2
-W_WindowManager_CompositionArea: ds $20 ;two tiles, identical to VRAM
+W_WindowManager_CompositionBackground:: ds 2
+W_WindowManager_CompositionArea:: ds $20 ;two tiles, identical to VRAM
 
 SECTION "WindowManager VWF Advice", ROMX[$6200], BANK[$3]
 

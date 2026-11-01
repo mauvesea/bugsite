@@ -24,6 +24,8 @@
     "VWFCONFIG": 31,
     "VWFENABLE": 32,
     "VWFDISABLE": 33,
+    "DESCSTAGE": 34,
+    "DESCCOMMIT": 35,
     "POPALL": 44,
     "NPREF": 54,
     "JMPT": 55,

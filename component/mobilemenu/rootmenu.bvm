@@ -6949,6 +6949,8 @@ MobileMenu_ItemManagementLogic:
     NPREF FARCALL $F1
     POPALL
     POPALL
+    JAL .draw_item_menu_footer
+    NPREF POPALL
     INDIR W_MobileMenu_ActiveScreen
     IMMED $B
     CMP_NEQ
@@ -7023,6 +7025,9 @@ MobileMenu_ItemManagementLogic:
     IMMED $FFFD
     CMP_NEQ
     JMPT .sub_127_37a0 ;$37a0
+    ARFREE
+    NPREF UO $5E
+    POPALL
     INDIR $448
     IMMED $0
     CMP_NEQ
@@ -7062,6 +7067,9 @@ MobileMenu_ItemManagementLogic:
     IMMED $FFFE
     CMP_NEQ
     JMPT .sub_127_37f0 ;$37f0
+    ARFREE
+    NPREF UO $5E
+    POPALL
     INDIR $448
     IMMED $0
     CMP_NEQ
@@ -7460,6 +7468,77 @@ MobileMenu_ItemManagementLogic:
     ARFREE
     NPREF UO $5E
     POPALL
+    RET
+
+.draw_item_menu_footer
+    ; Each footer label owns bank 0 tiles outside the frame and cursor graphics.
+    ; Keep category ranges separate so the old label survives a tilemap reload.
+    INDIR W_LCDC_SetAttrVal
+    INDIR W_LCDC_SetAttrVal
+    IMMED $F8
+    AND
+    IMMED $3
+    OR
+    STR
+    POPALL
+    IMMED $1
+    IMMED $10
+    SCRCURS
+    IMMED $0DC
+    IMMED $0DF
+    VWFENABLE
+    DB STR_127_Items
+    PRINT
+    ARFREE
+    POPALL
+    VWFDISABLE
+    INDIR W_MobileMenu_ActiveScreen
+    IMMED $B
+    CMP_NEQ
+    JMPT .item_footer_chip
+    IMMED $9
+    IMMED $10
+    SCRCURS
+    IMMED $0C7
+    IMMED $0CE
+    VWFENABLE
+    DB STR_127_VaccineTool
+    PRINT
+    ARFREE
+    POPALL
+    VWFDISABLE
+    RET
+
+.item_footer_chip
+    INDIR W_MobileMenu_ActiveScreen
+    IMMED $C
+    CMP_NEQ
+    JMPT .item_footer_password
+    IMMED $B
+    IMMED $10
+    SCRCURS
+    IMMED $0D2
+    IMMED $0D5
+    VWFENABLE
+    DB STR_127_ChipCategory
+    PRINT
+    ARFREE
+    POPALL
+    VWFDISABLE
+    RET
+
+.item_footer_password
+    IMMED $A
+    IMMED $10
+    SCRCURS
+    IMMED $080
+    IMMED $085
+    VWFENABLE
+    DB STR_127_PasswordCategory
+    PRINT
+    ARFREE
+    POPALL
+    VWFDISABLE
     RET
 
 sub_127_3ae8:

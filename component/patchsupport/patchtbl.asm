@@ -18,8 +18,16 @@ Banked_WindowManager_ADVICE_OpVWFENABLE::
 Banked_WindowManager_ADVICE_OpVWFDISABLE::
     jp WindowManager_ADVICE_OpVWFDISABLE
     nop
-    
-    ds $24 ;Remaining bytes for custom opcodes.
+
+Banked_MobileMenu_DescStage::
+    jp MobileMenu_DescStage
+    nop
+
+Banked_MobileMenu_DescCommit::
+    jp MobileMenu_DescCommit
+    nop
+
+    ds $1C ;Remaining bytes for custom opcodes.
     
 Banked_WindowManager_ADVICE_PrintChara::
     jp WindowManager_ADVICE_PrintChara
