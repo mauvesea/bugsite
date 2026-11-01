@@ -330,38 +330,26 @@ MobileMenu_PrimaryScreenLogic: ;$206
     IMMED $1
     IMMED $10
     SCRCURS
-    IMMED $1D0
-    IMMED $1D7
-    VWFENABLE
     DB STR_127_Mobile
     PRINT
     ARFREE
     POPALL
-    VWFDISABLE
     
     IMMED $8
     IMMED $10
     SCRCURS
-    IMMED $1D8
-    IMMED $1DF
-    VWFENABLE
     DB STR_127_Money
     PRINT
     ARFREE
     POPALL
-    VWFDISABLE
 
     IMMED $9
     IMMED $11
     SCRCURS
-    IMMED $1D8
-    IMMED $1DF
-    VWFENABLE
     DB STR_127_Money
     PRINT
     ARFREE
     POPALL
-    VWFDISABLE
     
     INDIR W_LCDC_SetAttrVal
     INDIR W_LCDC_SetAttrVal
@@ -523,9 +511,6 @@ MobileMenu_PrimaryScreenLogic: ;$206
     NPREF WINCLR
     POPALL
     
-    IMMED $1B0
-    IMMED $1D0
-    VWFENABLE
     
     INDIR W_MainScript_PortraitID
     IMMED $0
@@ -650,7 +635,6 @@ MobileMenu_PrimaryScreenLogic: ;$206
     POPALL
 
 .printing_done
-    VWFDISABLE
     
     ARFREE
     NPREF UO $85

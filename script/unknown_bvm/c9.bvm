@@ -2477,10 +2477,6 @@ ENDC
     RET
 
 .sub_c9_13db
-;Dialogue ring config
-    IMMED $6
-    IMMED $7D
-    VWFENABLE
     INDIR W_MainScript_ActiveScene
     IMMED $64
     STR
@@ -2499,7 +2495,6 @@ ENDC
     ARFREE
     INDIR W_MainScript_PortraitID
     NPREF FARCALL
-    VWFDISABLE
     POPALL
     POPALL
     RET

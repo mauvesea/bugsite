@@ -239,7 +239,7 @@ STR_CE_477, α VERSION, α VERSION,
 STR_CE_48A, β VERSION, β VERSION,
 STR_CE_4C0,つつ゛きから,Continue,
 STR_CE_4E0,はし゛めから,New Game,
-,,,"(Chip descriptions) – Currently not using a vwf, so it will be limited to 17-char per line. A proper translation will be left on this column."
+,,,"(Chip descriptions) – The regular font is limited to 17 characters per line. A proper translation will be left on this column."
 STR_DC_355,FEせいのチッフ゜,FE chip for,FE-made chip for beginners.
 STR_DC_364,\,\,
 STR_DC_36B,しょしんしゃむけ,beginners.,
@@ -360,7 +360,7 @@ STR_DC_9D8,Bきゅうて゛はあつかえない,Not for Rank B.,
 STR_DC_9ED,さいきょうのチッフ゜,Strongest chip.,The strongest chip. Cannot be used at Rank B.
 STR_DC_9FD,\,\,
 STR_DC_A04,Bきゅうて゛はあつかえない,Not for Rank B.,
-,,,"(Item descriptions) – Currently not using a vwf, so it will be limited to 17-char per line. A proper translation will be left on this column."
+,,,"(Item descriptions) – The regular font is limited to 17 characters per line. A proper translation will be left on this column."
 STR_DD_565,アクセスホ゜イントをつかわす゛に,Warps anywhere,Warps to any Land/Area without using an Access Point.
 STR_DD_57B,\,\,
 STR_DD_582,ラント゛・エリアにワーフ゜て゛きる,without an AP.,
@@ -1257,7 +1257,7 @@ STR_DE_3CF6,とくしゅたいせいを える,とくしゅたいせいを え�
 STR_DE_3D0A,しぬマネをして、てきから,しぬマネをして、てきから,
 STR_DE_3D1C,\,\,
 STR_DE_3D23,こうけ゛きされなくなる,こうけ゛きされなくなる,
-,,,(Bug encyclopedia entries) – Using vwf already.
+,,,(Bug encyclopedia entries) – Review line lengths for the regular font.
 STR_DF_DB0,1まいのきんそ゛くからうまれた,Born from a single piece of\metal. Great at body tackle\attacks.\,
 STR_DF_DC5,\,,
 STR_DF_DCC,たいあたりこうけ゛きか゛とくい,,
@@ -2668,7 +2668,7 @@ STR_11B_1246,を\こうけ゛き!\, with\Tongue Attack!\,
 STR_11B_1267,は\ノース゛アタックて゛\,\attacked\,
 STR_11B_127E,を\こうけ゛き!\, with\Nose Attack!,
 STR_11B_129D,は\し゛しんて゛\てきせ゛んたいをこうけ゛き!\,\attacked all foes\with Earthquake!\,
-STR_11B_12CD,は\しんと゛7て゛\てきせ゛んたいをこうけ゛き!\,\attacked all foes\with Magnitude10!\,"(Note: No space to print “Magnitude 10”, with a space before the 10, in a single line, so the space was removed. Could be fixed if vwf is implemented)"
+STR_11B_12CD,は\しんと゛7て゛\てきせ゛んたいをこうけ゛き!\,\attacked all foes\with Magnitude10!\,"(Note: No space to print “Magnitude 10”, with a space before the 10, in a single line, so the space was removed. Could be revisited if more line space becomes available)"
 STR_11B_12FE,は\し゛は゛くした!\,\self-destructed!\,
 STR_11B_1321,は\け゛んわくのまいを おと゛った!\,\performed the\Alluring Dance!\,
 STR_11B_134C,は\ちからをためた!\,\stored power!\,
@@ -2867,7 +2867,7 @@ STR_11B_2DDB,は\かえんほうしゃて゛\,\attacked\,
 STR_11B_2DF1,を\こうけ゛き!\, with\Flamethrower!\,
 STR_11B_2E12,の\けいかいしょく!\,\used Warning\Mark!\,
 STR_11B_2E35,の\あわのまく!\,\used Bubble Veil!\It enveloped\,
-STR_11B_2E48,を\あわのまくか゛つつみこむ!\, with\a veil of foam!\,"(Note: veil of bubbles would be better here, but foam makes it fit under 17 characters. Could be changed if vwf is implemented.)"
+STR_11B_2E48,を\あわのまくか゛つつみこむ!\, with\a veil of foam!\,"(Note: veil of bubbles would be better here, but foam makes it fit under 17 characters. Could be revisited if more line space becomes available.)"
 STR_11B_2E70,は\こうけ゛きしょくて゛\ハ゜ワーアッフ゜!\,\powered up with\Offense Mark!\,
 STR_11B_2E9F,は\こうあつすいりゅうて゛\,\attacked\,
 STR_11B_2EB7,を\こうけ゛き!\, with\Hydro Pressure!\,

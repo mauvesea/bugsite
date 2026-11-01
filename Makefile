@@ -30,7 +30,7 @@ OBJS := component/bugvm/decode.o component/bugvm/optable.o component/bugvm/vm_st
         component/mobilemenu/vars.o \
         component/patchsupport/patchtbl.o component/patchsupport/pointcut.o \
         component/patchsupport/readfile.o component/patchsupport/custom_opcode.o \
-        component/windowmanager/vwf_advice.o
+        component/windowmanager/tiletext_advice.o
 OBJS_ALPHA := $(OBJS:.o=_alpha.o)
 OBJS_BETA := $(OBJS:.o=_beta.o)
 OBJS_ALPHA_DEBUG := $(OBJS:.o=_alpha_debug.o)
@@ -158,8 +158,8 @@ $(BUILD_DIR)/%.1bpp: %.png
 	@mkdir -p $(dir $@)
 	@rgbgfx -d 1 -o $@ $<
 
-BVM_DEPS := script/bugvm_strings_npc.csv script/bugvm_strings_story.csv script/bugvm_strings_system.csv script/charmap.txt component/mainscript/themes/normal/metrics.bfont utilities/opcodes_bugsite_patch.json
-BVM_FLAGS := --deffile script/bugvm_strings_npc.csv --deffile script/bugvm_strings_story.csv --deffile script/bugvm_strings_system.csv --autobalance --metrics component/mainscript/themes/normal/metrics.bfont --opcode_tbl utilities/opcodes_bugsite_patch.json --language English
+BVM_DEPS := script/bugvm_strings_npc.csv script/bugvm_strings_story.csv script/bugvm_strings_system.csv script/charmap.txt utilities/opcodes_bugsite_patch.json
+BVM_FLAGS := --deffile script/bugvm_strings_npc.csv --deffile script/bugvm_strings_story.csv --deffile script/bugvm_strings_system.csv --autobalance --opcode_tbl utilities/opcodes_bugsite_patch.json --language English
 
 $(BUILD_DIR)/%.bof: %.bvm $(BVM_DEPS)
 	@echo "Assembling" $<
@@ -180,11 +180,6 @@ $(C9_BOF_ALPHA) $(C9_BOF_BETA) $(C9_BOF_ALPHA_DEBUG) $(C9_BOF_BETA_DEBUG): $(C9_
 	@echo "Assembling" $< "($(BVM_DEFINES))"
 	@mkdir -p $(dir $@)
 	@$(PYTHON) utilities/bvmasm.py $< $(BVM_DEFINES) $(BVM_FLAGS) script/charmap.txt $@
-
-$(BUILD_DIR)/%.metrics: %.bfont script/charmap.txt
-	@echo "Compiling font metrics from " $<
-	@mkdir -p $(dir $@)
-	@$(PYTHON) utilities/bfontmetrics.py $< script/charmap.txt $@
 
 $(BUILD_DIR)/%.spranim.bof: %.banim
 	@echo "Assembling" $<

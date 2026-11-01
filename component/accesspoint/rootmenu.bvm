@@ -464,16 +464,12 @@ AccessPoint_PrimaryScreenLogic:
     IMMED $1
     SCRCURS
     
-    IMMED $1D0
-    IMMED $1DF
-    VWFENABLE
     
     DB STR_F0_AccessPointMenu
     PRINT
     POPALL
     ARFREE
     
-    VWFDISABLE
     
     INDIR $15
     IMMED $215
@@ -592,9 +588,6 @@ AccessPoint_PrimaryScreenLogic:
     NPREF WINCLR
     POPALL
     
-    IMMED $1E0
-    IMMED $1FF
-    VWFENABLE
     
     INDIR W_MainScript_PortraitID
     IMMED $0
@@ -676,7 +669,6 @@ AccessPoint_PrimaryScreenLogic:
     POPALL
     
 .done_printing_selected_desc
-    VWFDISABLE
     INDIR W_WindowManager_ContentsAttributes
     IMMED $0
     STR
@@ -2080,9 +2072,6 @@ AccessPoint_SaveScreenLogic:
     POPALL
     ARFREE
     
-    IMMED $1D0
-    IMMED $1DF
-    VWFENABLE
     
     DB STR_F0_1031
     NPREF PRINT
@@ -2100,7 +2089,6 @@ AccessPoint_SaveScreenLogic:
     NPREF PRINT
     POPALL
     
-    VWFDISABLE
     
     INDIR W_MainScript_PortraitID
     IMMED $3
@@ -2122,14 +2110,10 @@ AccessPoint_SaveScreenLogic:
     POPALL
     ARFREE
     
-    IMMED $1E0
-    IMMED $1E7
-    VWFENABLE
     
     NPREF PRNICK
     POPALL
     
-    VWFDISABLE
     
     JAL .sub_f0_1119 ;$1119
     NPREF POPALL
@@ -2140,20 +2124,13 @@ AccessPoint_SaveScreenLogic:
     NPREF SCRCURS
     POPALL
     
-    IMMED $1E8
-    IMMED $1EF
-    VWFENABLE
     
     DB STR_F0_1096
     PRINT
     POPALL
     ARFREE
     
-    VWFDISABLE
     
-    IMMED $1F0
-    IMMED $1F7
-    VWFENABLE
     
     IMMED $1
     IMMED $1
@@ -2164,11 +2141,7 @@ AccessPoint_SaveScreenLogic:
     POPALL
     ARFREE
     
-    VWFDISABLE
     
-    IMMED $1F8
-    IMMED $1FF
-    VWFENABLE
     
     IMMED $4
     IMMED $6
@@ -2179,7 +2152,6 @@ AccessPoint_SaveScreenLogic:
     POPALL
     ARFREE
     
-    VWFDISABLE
     
     IMMED $6
     ENOP $2D
@@ -2206,13 +2178,9 @@ AccessPoint_SaveScreenLogic:
     POPALL
     ARFREE
     
-    IMMED $8
-    IMMED $17
-    VWFENABLE
     
     NPREF FARCALL $107
     
-    VWFDISABLE
     
     POPALL
     POPALL
@@ -2234,14 +2202,10 @@ AccessPoint_SaveScreenLogic:
     IMMED $0
     NPREF WINCURS
     
-    IMMED $20
-    IMMED $2F
-    VWFENABLE
     
     DB STR_F0_1102
     NPREF PRINT
     
-    VWFDISABLE
     
     POPALL
     ARFREE
@@ -2254,7 +2218,6 @@ AccessPoint_SaveScreenLogic:
     POPALL
     
     ;Restore FWF font after overwriting it.
-    ;TODO: Once Access Point is completely VWF'd, remove these calls
     INDIR W_MainScript_PortraitID
     IMMED $0
     STR
@@ -3855,9 +3818,6 @@ AccessPoint_GuardianBrowserScreenLogic:
     POPALL
     ARFREE
     
-    IMMED $1D0
-    IMMED $1E7
-    VWFENABLE
     
     DB STR_F0_1DE1
     NPREF PRINT
@@ -3875,7 +3835,6 @@ AccessPoint_GuardianBrowserScreenLogic:
     NPREF PRINT
     POPALL
     
-    VWFDISABLE
     
     INDIR W_WindowManager_ContentsAttributes
     IMMED $0
@@ -3924,13 +3883,9 @@ AccessPoint_GuardianBrowserScreenLogic:
     NPREF WINCLR
     POPALL
     
-    IMMED $20
-    IMMED $2F
-    VWFENABLE
     
     JAL .sub_f0_2a26 ;$2a26
     
-    VWFDISABLE
     
     NPREF POPALL
     ARFREE
@@ -5044,7 +4999,6 @@ AccessPoint_GuardianBrowserScreenLogic:
     POPALL
     
     ;Restore FWF font after overwriting it.
-    ;TODO: Once Access Point is completely VWF'd, remove these calls
     INDIR W_MainScript_PortraitID
     IMMED $0
     STR
@@ -5077,9 +5031,6 @@ AccessPoint_GuardianBrowserScreenLogic:
     IMMED $B
     NPREF SCRCURS
     
-    IMMED $7
-    IMMED $1F
-    VWFENABLE
     
     POPALL
     ARFREE
@@ -5134,7 +5085,6 @@ AccessPoint_GuardianBrowserScreenLogic:
     POPALL
     ARFREE
     
-    VWFDISABLE
     
     IMMED $1
     ENOP $2D
@@ -5880,9 +5830,6 @@ AccessPoint_WebsiteZukanOverviewScreen:
     IMMED $2
     NPREF SCRCURS
     
-    IMMED $180
-    IMMED $19F
-    VWFENABLE
     
     POPALL
     ARFREE
@@ -5957,9 +5904,6 @@ AccessPoint_WebsiteZukanOverviewScreen:
     STR
     
 .draw_headings
-    IMMED $1A0
-    IMMED $1AF
-    VWFENABLE
     
     IMMED $2
     IMMED $8
@@ -6021,13 +5965,9 @@ AccessPoint_WebsiteZukanOverviewScreen:
     STR
     POPALL
     
-    IMMED $7
-    IMMED $7D
-    VWFENABLE
     
     JAL AccessPoint_ZukanTableLogic ;$2f7f
     
-    VWFDISABLE
     
     NPREF POPALL
     INDIR $17E
@@ -6569,9 +6509,6 @@ AccessPoint_WebsiteZukanInnerScreen:
     NPREF POPALL
 
 .print_zukan_entry
-    IMMED $E0
-    IMMED $E7
-    VWFENABLE
     
     IMMED $B
     IMMED $10
@@ -6582,7 +6519,6 @@ AccessPoint_WebsiteZukanInnerScreen:
     POPALL
     ARFREE
     
-    VWFDISABLE
     
     INDIR W_MainScript_PortraitID
     IMMED $600
@@ -6607,16 +6543,12 @@ AccessPoint_WebsiteZukanInnerScreen:
     POPALL
     ARFREE
     
-    IMMED $E8
-    IMMED $EF
-    VWFENABLE
     
     INDIR W_MainScript_PortraitID
     NPREF UO $4D
     POPALL
     ARFREE
     
-    VWFDISABLE
     
     IMMED $7
     ENOP $2D
@@ -6625,14 +6557,10 @@ AccessPoint_WebsiteZukanInnerScreen:
     POPALL
     ARFREE
     
-    IMMED $F0
-    IMMED $F7
-    VWFENABLE
     
     NPREF PRNAME
     POPALL
     
-    VWFDISABLE
     
     INDIR W_WindowManager_ContentsAttributes
     IMMED $2
@@ -6663,15 +6591,11 @@ AccessPoint_WebsiteZukanInnerScreen:
     POPALL
     ARFREE
     
-    IMMED $7
-    IMMED $7E
-    VWFENABLE
     
     NPREF FARCALL $DF
     POPALL
     POPALL
     
-    VWFDISABLE
     
     INDIR W_WindowManager_ContentsAttributes
     IMMED $2
@@ -6696,14 +6620,10 @@ AccessPoint_WebsiteZukanInnerScreen:
     NPREF SCRCURS
     POPALL
     
-    IMMED $F8
-    IMMED $FF
-    VWFENABLE
     
     JAL sub_f0_5483 ;$5483
     NPREF POPALL
     
-    VWFDISABLE
     
     INDIR W_MainScript_PortraitID
     INDIR $17A

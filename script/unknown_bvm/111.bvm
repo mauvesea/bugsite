@@ -2,7 +2,6 @@
     RET
 
 .sub_111_4
-    VWFDISABLE
     JAL .sub_111_618 ;$618
     NPREF POPALL
     ARFREE
